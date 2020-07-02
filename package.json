@@ -5,8 +5,16 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
+    "@rails/webpacker": "5.1.1",
+    "@sonicgarden/vue-custom-element-rails": "^0.2.1",
+    "apollo-boost": "^0.4.9",
+    "apollo-link-batch-http": "^1.2.14",
     "babel-preset-typescript-vue": "^1.1.1",
+    "bootstrap": "^5.0.0-alpha1",
+    "fork-ts-checker-webpack-plugin": "^5.0.6",
+    "graphql": "^14.0.0",
+    "graphql-ruby-client": "^1.7.11",
+    "node-sass": "^4.14.1",
     "ts-loader": "^7.0.5",
     "turbolinks": "^5.2.0",
     "typescript": "^3.9.5",
@@ -16,6 +24,13 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "apollo": "^2.28.3",
     "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "graphql": "14.6.0"
+  },
+  "scripts": {
+    "apollo-codegen": "apollo codegen:generate app/javascript/src/graphql/types.ts --includes='app/javascript/src/graphql/**/*.ts' --target=typescript --outputFlat"
   }
 }
