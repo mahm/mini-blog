@@ -6,35 +6,39 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getApolloClient } from 'src/lib'
-import { TOPICS_QUERY } from 'src/graphql'
-import { topicsQuery } from 'src/graphql/types'
-import { ITopic, IUser } from 'src/types/model'
+import gql from 'graphql-tag'
 
+import { apolloProvider } from 'src/lib'
+import { RETRIEVE_TOPICS, TOPIC_CREATED } from 'src/graphql'
 import Topic from '../components/Topic.vue'
 
-type IState = {
-  topics: ITopic[]
-}
-
 export default Vue.extend({
+  apolloProvider,
   components: {
     Topic,
   },
-  data(): IState {
-    return {
-      topics: [],
-    }
-  },
-  async created() {
-    await this.refresh()
-  },
-  methods: {
-    async refresh(): Promise<void> {
-      const { data } = await getApolloClient().query<topicsQuery>({
-        query: TOPICS_QUERY,
-      })
-      this.topics = data.topics
+  apollo: {
+    topics: {
+      query: RETRIEVE_TOPICS,
+      subscribeToMore: {
+        document: TOPIC_CREATED,
+        updateQuery: (previousResult, { subscriptionData }) => {
+          const newTopic = subscriptionData.data.topicCreated.topic
+          const existed: boolean = previousResult.topics.some((topic) => {
+            return topic.id == newTopic.id
+          })
+          if (existed) {
+            return previousResult
+          } else {
+            return {
+              topics: [
+                subscriptionData.data.topicCreated.topic,
+                ...previousResult.topics,
+              ],
+            }
+          }
+        },
+      },
     },
   },
 })

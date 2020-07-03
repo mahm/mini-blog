@@ -14,6 +14,7 @@ gem 'devise'
 gem 'hamlit-rails'
 gem 'vue_custom_element_rails', github: 'SonicGarden/vue-custom-element-rails'
 gem 'graphql'
+gem 'graphql-batch'
 gem 'rails_same_site_cookie'
 
 group :development, :test do

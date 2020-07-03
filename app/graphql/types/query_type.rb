@@ -3,7 +3,7 @@ module Types
     field :topics, [Types::TopicType], null: false
 
     def topics
-      Topic.all
+      Topic.order(id: :desc)
     end
 
     field :topic, Types::TopicType, null: false do

@@ -10,6 +10,7 @@ module Mutations
     def resolve(**args)
       user = context[:current_user]
       topic = user.topics.create(body: args[:body])
+      ApplicationSchema.subscriptions.trigger("topicCreated", {}, topic)
       {
         topic: topic,
         result: topic.errors.blank?,

@@ -4,6 +4,9 @@ class ApplicationSchema < GraphQL::Schema
 
   mutation(Types::MutationType)
   query(Types::QueryType)
+  subscription(Types::SubscriptionType)
+
+  query_analyzer(LogQueryComplexityAnalyzer) if Rails.env.development?
 
   # Opt in to the new runtime (default in future graphql-ruby versions)
   use GraphQL::Execution::Interpreter
@@ -13,4 +16,5 @@ class ApplicationSchema < GraphQL::Schema
   use GraphQL::Pagination::Connections
 
   use GraphQL::Subscriptions::ActionCableSubscriptions
+  use GraphQL::Batch
 end

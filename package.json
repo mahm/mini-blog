@@ -19,6 +19,7 @@
     "turbolinks": "^5.2.0",
     "typescript": "^3.9.5",
     "vue": "^2.6.11",
+    "vue-apollo": "^3.0.3",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11"
   },
@@ -29,8 +30,5 @@
   },
   "resolutions": {
     "graphql": "14.6.0"
-  },
-  "scripts": {
-    "apollo-codegen": "apollo codegen:generate app/javascript/src/graphql/types.ts --includes='app/javascript/src/graphql/**/*.ts' --target=typescript --outputFlat"
   }
 }

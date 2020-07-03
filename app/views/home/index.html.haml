@@ -2,4 +2,9 @@
 .container
   .row.justify-content-md-center
     .col.col-lg-6
-      %topics-container
+      .mt-3
+        - if user_signed_in?
+          %topic-form
+        - else
+          = render 'sign_in_card'
+        %topics-container
