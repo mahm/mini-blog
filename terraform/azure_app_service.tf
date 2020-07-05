@@ -61,9 +61,10 @@ resource "azurerm_app_service" "web" {
     DATABASE_USER     = "${azurerm_postgresql_server.main.administrator_login}@${azurerm_postgresql_server.main.fqdn}"
     DATABASE_PASSWORD = azurerm_postgresql_server.main.administrator_login_password
 
-    RAILS_MASTER_KEY = lookup(var.config, "rails_master_key")
-    RAILS_ENV        = lookup(var.config, "rails_env")
-    SECRET_KEY_BASE  = lookup(var.config, "secret_key_base")
+    RAILS_MASTER_KEY    = lookup(var.config, "rails_master_key")
+    RAILS_ENV           = lookup(var.config, "rails_env")
+    SECRET_KEY_BASE     = lookup(var.config, "secret_key_base")
+    RAILS_LOG_TO_STDOUT = true
     # nginx などは立てず、 Rails で静的ファイルも返すようにする
     RAILS_SERVE_STATIC_FILES = true
 
