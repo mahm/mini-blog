@@ -40,3 +40,16 @@
 yarn-debug.log*
 .yarn-integrity
 apollo.config.js
+config.tf
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+.env

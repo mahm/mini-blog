@@ -1,0 +1,16 @@
+variable "config" {
+  default = {
+    resource_group    = ""
+    location          = ""
+    app_name          = ""
+    acr_name          = ""
+    acr_user          = ""
+    acr_password      = ""
+    db_name           = ""
+    rails_master_key  = ""
+    rails_env         = ""
+    secret_key_base   = ""
+    sendgrid_username = ""
+    sendgrid_password = ""
+  }
+}
