@@ -20,7 +20,7 @@
     "graphql": "^14.0.0",
     "graphql-ruby-client": "^1.7.11",
     "graphql-tag": "^2.10.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "ts-loader": "^7.0.5",
     "turbolinks": "^5.2.0",
     "typescript": "^3.9.5",
